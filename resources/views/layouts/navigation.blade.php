@@ -16,6 +16,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('stock')" :active="request()->routeIs('stock')">
+                            {{ __('stocks') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('ventes')" :active="request()->routeIs('ventes')">
                             {{ __('ventes') }}
                     </x-nav-link>
@@ -38,24 +41,7 @@
                     <x-nav-link :href="route('client.dashboard')" :active="request()->routeIs('client.dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('client.vente')" :active="request()->routeIs('client.vente')">
-                        {{ __('ventes') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('client.restitution')" :active="request()->routeIs('client.restitution')">
-                        {{ __('restitution') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('client.receptions')" :active="request()->routeIs('client.receptions')">
-                        {{ __('receptions') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('client.stockes')" :active="request()->routeIs('client.stockes')">
-                        {{ __('stockes') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('client.besoins')" :active="request()->routeIs('client.besoins')">
-                        {{ __('besoins') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('client.divers')" :active="request()->routeIs('client.divers')">
-                        {{ __('divers') }}
-                    </x-nav-link>
+                    
                     
                     
                     @endif

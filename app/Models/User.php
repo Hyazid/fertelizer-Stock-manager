@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
     ];
 
     /**
@@ -33,6 +33,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function getRoleAttribute($value)
+{
+    return $value;
+}
+
 
     /**
      * Get the attributes that should be cast.
