@@ -17,15 +17,42 @@ class StockController extends Controller
 
     }
     public function store(Request $request){
+        $validated = $request->validate([
+            'name'           => 'required|string|max:255',
+            'type'           => 'required|string|max:255',
+            'description'    => 'nullable|string',
+            'quantite'       => 'required|integer|min:0',
+            'prix_unitaire'  => 'required|numeric|min:0',
+        ]);
+    
+        try {
+            Product::create($request->all());
+            return redirect()->route('dashboard')->with('success', 'Produit ajouté avec succès');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Erreur: ' . $e->getMessage());
+        }
+    
+    }
+    public function update(Request $request,$id){
         $request->validate([
             'name'        => 'required|string|max:255',
             'type'        => 'required|string|max:255',
-            'description' => 'nullable|string',
             'quantite'    => 'required|integer|min:0',
             'prix_unitaire'  => 'required|numeric|min:0',
+            'description' => 'nullable|string',
         ]);
-        Product::create($request->all());
-        return redirect()->route('dashboard')->with('success','Produit ajouter avec succes');
-    }
+    
+        $product = Product::findOrFail($id);
+        $product->update([
+            'name'        => $request->name,
+            'type'        => $request->type,
+            'quantite'    => $request->quantite,
+            'prix_unitaire'  => $request->prix_unitaire,
+            'description' => $request->description,
+        ]);
+    
+        return redirect()->route('dashboard')->with('success', 'Produit mis à jour avec succès.');
+
+    }    
 
 }
