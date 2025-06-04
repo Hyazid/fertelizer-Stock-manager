@@ -8,13 +8,14 @@ class Achat extends Model
 {
     protected $fillable=[
         'product_id',
-        'product',
-        'type_produit',
+        'produit',
+        'type',
         'quantite',
-        'prix_achat',
+        'prix_unitaire',
         'taxe',
         'fournisseur',
-        'date_achat'
+        'prix_achat',
+        'date_achat',
 
     ];
     public function produit(){

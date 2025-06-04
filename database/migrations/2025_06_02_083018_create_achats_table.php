@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('achats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->string('produit');
-            $table->string('type_produit');
+            $table->string('produit')->nullable() ??  'Inconnu';
+            $table->string('type');
             $table->unsignedInteger('quantite');
             $table->decimal('prix_achat',10,2);
+            $table->decimal('prix_unitaire',10,2);
             $table->decimal('taxe',10,2);
             $table->string('fournisseur')->nullable();
             $table->date('date_achat')->default(now());
